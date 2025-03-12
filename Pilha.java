@@ -1,12 +1,12 @@
-public class Pilha {
+public class Pilha <T> {
     // Atributos privados
-    private static int TAM_DEFAULT = 100;
+    private static final int TAM_DEFAULT = 100;
     private int topoPilha;
-    private int e[ ];
+    private  T e[ ];
 
     // Métodos públicos
     public Pilha(int tamanho) { // construtor 1
-    this.e = new int [tamanho];
+    this.e = (T[]) new Object[tamanho];
     this.topoPilha = -1;
    }
 
@@ -34,7 +34,7 @@ public class Pilha {
 
     // insere um elemento e 
     // no topo da pilha
-    public void push(int e) throws Exception{
+    public void push(T e) throws Exception{
         if (! this.isFull( ))
             this.e[++this.topoPilha] = e;
         else
@@ -43,7 +43,7 @@ public class Pilha {
 
     //remove um elemento
     //do topo da pilha
-    public int pop() throws Exception {
+    public T pop() throws Exception {
         if (! this.isEmpty( )){
             return this.e[this.topoPilha--];
         }
@@ -52,7 +52,7 @@ public class Pilha {
         }
     }
 
-    public int topo() throws Exception {
+    public T topo() throws Exception {
         if ( ! this.isEmpty( ))
             return this.e[this.topoPilha];
         else{
